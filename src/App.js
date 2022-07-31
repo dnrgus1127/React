@@ -52,7 +52,7 @@ function App() {
       <Header title="React" onChangeMode={function(){
         alert("Header");
       }}></Header>
-      <Header title="Js"></Header>
+      <Header title="Js2"></Header>
       <Header title="Vue"></Header>
       <Nav topics={topics} onChangeMode={(id)=>{
         alert(id);
