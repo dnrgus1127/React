@@ -50,7 +50,7 @@ function App() {
   return (
     <div className="App">
       <Header title="React" onChangeMode={function(){
-        alert("Header");
+        alert("Heade2r");
       }}></Header>
       <Header title="Js2"></Header>
       <Header title="Vue"></Header>
