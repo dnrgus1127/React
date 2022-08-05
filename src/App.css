@@ -1,3 +1,102 @@
 .App{
+  /* margin: 10px; */
+  background-color: #453d3d;
+}
+
+* {
+ margin: 0;
+ padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #404040;
+}
+
+li {
+  list-style: none;
+}
+.HeadTitle{
+  /* margin: 10px; */
+  text-align: center;
+  /* background-color: black; */
+  color: white  ;
+  padding: 10px;
+}
+
+.Center{
+  align-items: center;
   margin: 10px;
+}
+
+p {
+  color:rgb(0,35,0,0.5);
+}
+
+.MenuSide {
+  list-style-type: none;
+}
+
+.liBox {
+  border: 1px solid #222;
+  padding: 20px 40px;
+  margin: 5px;
+  background-color: white;
+}
+
+Header {
+  margin: 10px;
+}
+
+Nav li {
+  border : 1px solid rgb(92, 85, 85);
+  padding: 20px 40px;
+  float : left;
+  list-style-type: none;
+  background-color: white;
+}
+
+Nav ol {
+  background-color: #c06161;
+  width: 100%;
+  border: 1px solid #222;
+  height: 100px;
+}
+
+
+#menu {
+  background: #453d3d;
+  /* border: #222 solid 1px; */
+}
+
+#menu ul{
+  width: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+  
+}
+
+#menu ul li {
+  float: left;
+  width: 25%;
+  height: 100%;
+  line-height: 50px;
+  text-align: center;
+  /* background-color: rgba(33, 30, 30, 0.761); */
+}
+
+#menu ul li a{
+  display: block;
+  color: white;
+}
+
+
+/* a:hover a에 마우스를 올려두었을 때 */
+#menu ul li a:hover {
+  background: #415346;
+  color: #fff
+}
+
+.App h1 {
+ color: white;
 }
