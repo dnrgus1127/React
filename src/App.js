@@ -1,5 +1,7 @@
 import './App.css';
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect, Component } from 'react';
+import { Link, Route, BrowserRouter as Router } from 'react-router-dom'
+import Main from './Main'
 
 
 
@@ -56,6 +58,45 @@ function Menu() {
 // }
 
 
+function Page1() {
+  const [message, setMessage] = useState(""); useEffect(() => { fetch('/api/hello').then(response => response.text()).then(message => { setMessage(message); }); }, [])
+
+  return <div className="App">
+  <HeadTitle title="HI"></HeadTitle>
+  <Menu></Menu>
+  {/* <Nav topics={topics} onChangeMode={(id) => {
+  alert(id);
+}}></Nav> */}
+  <TItleImg></TItleImg>
+  <Header title="React" onChangeMode={function () {
+    alert("Heade2r");
+  }}></Header>
+
+  <h1 className="App-title">{message}</h1>
+  <p className="App-intro">                To get started, edit <code>src/App.js</code> and save to reload.            </p>
+</div >
+}
+
+function Page2() {
+  const [message, setMessage] = useState(""); useEffect(() => { fetch('/api/hello').then(response => response.text()).then(message => { setMessage(message); }); }, [])
+
+  return <div className="App">
+  <HeadTitle title="HI"></HeadTitle>
+  {/* <Menu></Menu> */}
+  {/* <Nav topics={topics} onChangeMode={(id) => {
+  alert(id);
+}}></Nav> */}
+  <TItleImg></TItleImg>
+  <Header title="React" onChangeMode={function () {
+    alert("Heade2r");
+  }}></Header>
+
+  <h1 className="App-title">{message}</h1>
+  <p className="App-intro">                To get started, edit <code>src/App.js</code> and save to reload.            </p>
+</div >
+}
+
+
 
 function App() {
   // const topics = [
@@ -65,21 +106,37 @@ function App() {
   // ]
   const [message, setMessage] = useState(""); useEffect(() => { fetch('/api/hello').then(response => response.text()).then(message => { setMessage(message); }); }, [])
   return (
-    <div className="App">
-      <HeadTitle title="HI"></HeadTitle>
-      <Menu></Menu>
-      {/* <Nav topics={topics} onChangeMode={(id) => {
+    <Router>
+      <header>
+        <Link to="/">
+          <p>메인화면</p>
+        </Link>
+        <Link to="/api/time">
+          <p>시간 리셋</p>
+        </Link>
+        <Route exact paht="/" element={<Main />}></Route>
+        <Route path="/api/time" element={<Main />} />
+        <Route exact path="*" element={<Main />} />
+      </header>
+      <p> 가나다라 </p>
+
+     
+
+      <div className="App">
+        <HeadTitle title="HI"></HeadTitle>
+        <Menu></Menu>
+        {/* <Nav topics={topics} onChangeMode={(id) => {
         alert(id);
       }}></Nav> */}
-      <TItleImg></TItleImg>
-      <Header title="React" onChangeMode={function () {
-        alert("Heade2r");
-      }}></Header>
+        <TItleImg></TItleImg>
+        <Header title="React" onChangeMode={function () {
+          alert("Heade2r");
+        }}></Header>
 
-      <h1 className="App-title">{message}</h1>
-      <p className="App-intro">                To get started, edit <code>src/App.js</code> and save to reload.            </p>
-    </div >
-    
+        <h1 className="App-title">{message}</h1>
+        <p className="App-intro">                To get started, edit <code>src/App.js</code> and save to reload.            </p>
+      </div >
+    </Router>
   );
 }
 
