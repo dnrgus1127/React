@@ -1,7 +1,6 @@
 import './App.css';
-import React, { useState, useEffect, component } from 'react';
-import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import Main from './Main'
+import React, { useState, useEffect } from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 
 
@@ -24,116 +23,97 @@ function HeadTitle(props) {
 
 }
 
-function TItleImg() {
-  return <img src="/images/universe.jpg" alt='house' width="98.5%" height="30%" className='Center'></img>
+function TitleImg() {
+  return <img src="/images/whiskey.jpg" alt='whiskey' width="98.5%" height="30%" className='Center'></img>
 }
 
-function Menu() {
-  return <div id="menu">
-    <ul>
-      <li><a href='/'>Menu1</a></li>
-      <li><a href='/'>Menu2</a></li>
-      <li><a href='/'>Menu3</a></li>
-      <li><a href='/'>Menu4</a></li>
-    </ul>
+function Page() {
+  const [message, setMessage] = useState("");
+  useEffect(() => { fetch('/api/time').then(response => response.text()).then(message => { setMessage(message); }); }, [])
+
+  return <div className="App">
+    <HeadTitle title="Wine And More"></HeadTitle>
+    <Menu></Menu>
+
+    <Header title="React" onChangeMode={function () {
+      alert("Heade2r");
+    }}></Header>
+
+    <h1 className="App-title">{message}</h1>
+    <p className="App-intro">                To get started, edit <code>src/App.js</code> and save to reload.            </p>
+  </div >
+}
+
+function PageAlcol() {
+  return <div className='Center'>
+     <img src="/images/wine.png" alt='wine' width="96px" height="192px" className='Center'></img>
+     <p>파논 토카이 아토푸슈 6</p>
   </div>
 }
 
-// function Nav(props) {
-//   const lis = []
-//   for (let i = 0; i < props.topics.length; i++) {
-//     let t = props.topics[i];
-//     lis.push(<li key={t.id}>
-//       <a id={t.id} href={'/read/' + t.id} onClick={(event) => {
-//         event.preventDefault();
-//         props.onChangeMode(event.target.id);
-//       }}>{t.title}</a>
-//     </li>)
-//   }
-//   return <nav>
-//     <ol>
-//       {lis}
-//     </ol>
-//   </nav>
-// }
+function InsidePage(props){ // Menu 컴포넌트 
+  let menuId = props.selectedMenu // Menu 컴포넌트 선택된 값
+  let content = null;
 
+  if(menuId === '칵테일 추천'){
+    content = <TitleImg></TitleImg>
+  }
+  else if(menuId === '칵테일'){
+    content = <h1>식</h1>
+  }
+  else {
+    content = <h2>{props.selectedMenu}</h2>
+  }
+  console.log(props.selectedMenu)
 
-function Page1() {
-  const [message, setMessage] = useState(""); useEffect(() => { fetch('/api/hello').then(response => response.text()).then(message => { setMessage(message); }); }, [])
+  // setMenuId(props.menuId);
 
-  return <div className="App">
-  <HeadTitle title="HI"></HeadTitle>
-  <Menu></Menu>
-  {/* <Nav topics={topics} onChangeMode={(id) => {
-  alert(id);
-}}></Nav> */}
-  <TItleImg></TItleImg>
-  <Header title="React" onChangeMode={function () {
-    alert("Heade2r");
-  }}></Header>
-
-  <h1 className="App-title">잘못된 경로입니다.</h1>
-  <p className="App-intro">                To get started, edit <code>src/App.js</code> and save to reload.            </p>
-</div >
+  return <div>
+    {content}
+  </div>
 }
 
-function Page2() {
-  const [message, setMessage] = useState(""); useEffect(() => { fetch('/api/hello').then(response => response.text()).then(message => { setMessage(message); }); }, [])
-
-  return <div className="App">
-  <HeadTitle title="HI"></HeadTitle>
-  {/* <Menu></Menu> */}
-  {/* <Nav topics={topics} onChangeMode={(id) => {
-  alert(id);
-}}></Nav> */}
-  <TItleImg></TItleImg>
-  <Header title="React" onChangeMode={function () {
-    alert("Heade2r");
-  }}></Header>
-
-  <h1 className="App-title">{message}</h1>
-  <p className="App-intro">                To get started, edit <code>src/App.js</code> and save to reload.            </p>
-</div >
+function Menu() {
+  const menus = [
+    {id :1, title: '칵테일 추천'},
+    {id :2, title: '칵테일'},
+    {id :3, title: '위스키'},
+    {id :4, title: '보드카'},
+    {id :5, title: '데킬라'},
+    {id :6, title: '리큐르'},
+    {id :7, title: '럼'},
+    {id :8, title: '와인'}
+  ]
+  let [clickIndex,setClickIndex] = useState("칵테일 추천");
+  const lis = []
+  for(let i = 0; i< menus.length; i++){
+    lis.push(<li key={menus[i].id}><a href='/' onClick={(event) => {
+      event.preventDefault();
+      // clickIndex = menus[i].title;
+      setClickIndex(menus[i].title)
+      console.log(clickIndex)
+    }
+    }>{menus[i].title}</a></li>)
+  }
+  return <div id="menu">
+    <ul>
+      {lis}
+    </ul>
+    <InsidePage selectedMenu = {clickIndex}></InsidePage>
+  </div>
 }
-
-
 
 function App() {
-  // const topics = [
-  //   { id: 1, title: 'html', body: 'html is ...' },
-  //   { id: 2, title: 'vue', body: 'vue is ...' },
-  //   { id: 3, title: 'js', body: 'js is ...' },
-  // ]
-  const [message, setMessage] = useState(""); useEffect(() => { fetch('/api/hello').then(response => response.text()).then(message => { setMessage(message); }); }, [])
   return (
     <Router>
       <header>
-        <Link to="/">
-          <p>메인화면</p>
-        </Link>
-        <Link to="/api/time">
-          <p>시간 리셋</p>
-        </Link>
+        <meta charSet="utf-8"></meta>
         <Switch>
-          <Route exact path="/" component={Main}/>
-          <Route path="/api/time" component={Page2} />
-          <Route path="*" component={Page1} />
+          <Route exact path="/" component={Page} />
+          <Route path="/api/time" component={Page} />
+          <Route path="*" component={PageAlcol} />
         </Switch>
       </header>
-      <p> 가나다라 </p>
-
-     
-
-      {/* <div className="App">
-        <HeadTitle title="HI"></HeadTitle>
-        <Menu></Menu>
-        <TItleImg></TItleImg>
-        <Header title="React" onChangeMode={function () {
-          alert("Heade2r");
-        }}></Header>
-        <h1 className="App-title">{message}</h1>
-        <p className="App-intro">                To get started, edit <code>src/App.js</code> and save to reload.            </p>
-      </div > */}
     </Router>
   );
 }
