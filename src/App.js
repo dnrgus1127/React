@@ -114,9 +114,9 @@ function App() {
         <Link to="/api/time">
           <p>시간 리셋</p>
         </Link>
-        <Route exact paht="/" element={<Main />}></Route>
+        {/* <Route exact paht="/" element={<Main />}></Route>
         <Route path="/api/time" element={<Main />} />
-        <Route exact path="*" element={<Main />} />
+        <Route exact path="*" element={<Main />} /> */}
       </header>
       <p> 가나다라 </p>
 
