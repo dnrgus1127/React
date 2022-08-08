@@ -1,6 +1,6 @@
 import './App.css';
-import React, { useState, useEffect, Component } from 'react';
-import { Link, Route, BrowserRouter as Router } from 'react-router-dom'
+import React, { useState, useEffect, component } from 'react';
+import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Main from './Main'
 
 
@@ -72,7 +72,7 @@ function Page1() {
     alert("Heade2r");
   }}></Header>
 
-  <h1 className="App-title">{message}</h1>
+  <h1 className="App-title">잘못된 경로입니다.</h1>
   <p className="App-intro">                To get started, edit <code>src/App.js</code> and save to reload.            </p>
 </div >
 }
@@ -114,28 +114,26 @@ function App() {
         <Link to="/api/time">
           <p>시간 리셋</p>
         </Link>
-        {/* <Route exact paht="/" element={<Main />}></Route>
-        <Route path="/api/time" element={<Main />} />
-        <Route exact path="*" element={<Main />} /> */}
+        <Switch>
+          <Route exact path="/" component={Main}/>
+          <Route path="/api/time" component={Page2} />
+          <Route path="*" component={Page1} />
+        </Switch>
       </header>
       <p> 가나다라 </p>
 
      
 
-      <div className="App">
+      {/* <div className="App">
         <HeadTitle title="HI"></HeadTitle>
         <Menu></Menu>
-        {/* <Nav topics={topics} onChangeMode={(id) => {
-        alert(id);
-      }}></Nav> */}
         <TItleImg></TItleImg>
         <Header title="React" onChangeMode={function () {
           alert("Heade2r");
         }}></Header>
-
         <h1 className="App-title">{message}</h1>
         <p className="App-intro">                To get started, edit <code>src/App.js</code> and save to reload.            </p>
-      </div >
+      </div > */}
     </Router>
   );
 }
