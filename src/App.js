@@ -3,8 +3,11 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Whiskey from './IntroAcol';
-
-
+import styled from "style-components"
+import Dashboard from './containers/Dashboard'
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyle } from './styles/global'
+import {lightTheme, darkTheme} from './styles/theme'
 
 function Header(props) { //Component
   console.log('props', props, props.title)
@@ -109,18 +112,30 @@ function Menu() {
 
 function RowMenu(props) {
   const lis = []
-  return <div>
+  for (let i = 0; i < props.Menu.length; i++) {
+    lis.push(<li key={props.Menu[i].id}><a href='/' onClick={(event) => {
+      event.preventDefault();
+    }
+    }>{props.Menu[i].title}</a></li>)
+  }
+  return <div id='RowMenu'>
     <ul>
       {lis}
     </ul>
   </div>
 }
 function HomePage() {
+  const menus = [
+    { id: 1, title: "최근 변경" },
+    { id: 2, title: "최근 토론" },
+    { id: 3, title: "특수 기능" }
+
+  ]
   return <div id="page">
     {/* Page Top Header */}
     <div id='PageHeader'>
       <div>
-        <a href='/'>나무위키</a>
+        <RowMenu Menu={menus} ></RowMenu>
       </div>
     </div>
     {/* Page Body */}
@@ -134,6 +149,13 @@ function HomePage() {
 }
 
 
+function SpeedCode() {
+  return <ThemeProvider theme={lightTheme}>
+    <GlobalStyle />
+    <Dashboard />
+  </ThemeProvider>
+}
+
 function App() {
   return (
     <Router>
@@ -143,7 +165,9 @@ function App() {
           <Route exact path="/" component={Page} />
           <Route path="/api/time" component={Page} />
           <Route path="/homepage" component={HomePage} />
+          <Route path="/speedCode" component={SpeedCode} />
           <Route path="*" component={PageAlcol} />
+
         </Switch>
       </header>
     </Router>

@@ -1,0 +1,186 @@
+.App{
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+#menu a {
+  text-decoration: none;
+  color: #404040;
+}
+
+li {
+  list-style: none;
+}
+.HeadTitle{
+  /* margin: 10px; */
+  text-align: center;
+  /* background-color: black; */
+  color: white  ;
+  padding: 10px;
+}
+
+.Center{
+  align-items: center;
+  margin: 10px;
+  text-align: center;
+}
+/* 
+p {
+  color:rgb(0,35,0,0.5);
+} */
+
+
+
+.liBox {
+  border: 1px solid #222;
+  padding: 20px 40px;
+  margin: 5px;
+  background-color: white;
+}
+
+
+Nav li {
+  border : 1px solid rgb(92, 85, 85);
+  padding: 20px 40px;
+  float : left;
+  list-style-type: none;
+  background-color: white;
+}
+
+Nav ol {
+  background-color: #c06161;
+  width: 100%;
+  border: 1px solid #222;
+  height: 100px;
+}
+
+
+#menu {
+  background: #453d3d;
+  /* border: #222 solid 1px; */
+}
+
+#menu ul{
+  width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+  
+}
+
+#menu ul li {
+  float: left;
+  width: 12.5%;
+  height: 100%;
+  line-height: 50px;
+  text-align: center;
+  /* background-color: rgba(33, 30, 30, 0.761); */
+}
+
+#menu ul li a{
+  display: block; 
+  color: white;
+}
+
+
+
+/* a:hover a에 마우스를 올려두었을 때 */
+#menu ul li a:hover {
+  background: #415346;
+  color: #fff
+}
+
+.App h1 {
+ color: white;
+}
+
+#NameP {
+  /* border: none; */
+  width: 30%;
+  background-color: wheat;
+  text-align: left;
+  margin-left: 35%;
+  margin-right: 35%;
+  text-align: center;
+}
+
+.Center p {
+  color: #222222;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  /* background-color: rgb(45,47,52); */
+}
+
+/* #root {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(1, 1, 1);
+} */
+
+#PageHeader {
+  background-color: rgb(45, 47, 52);
+  /* height: 4vh; */
+  /* min-height: 30px;
+  max-height: 60px; */
+  padding: 0;
+  margin: 0;
+
+}
+
+#PageBody {
+  background-color: rgb(1, 1, 1);
+  height: 100vh;
+}
+
+#PageFooter {
+  background-color: rgb(45, 47, 52);
+  height: 100px;
+}
+
+#BodyContent {
+  border-left: rgb(45, 47, 52) solid 0.5px;
+  border-right: rgb(45, 47, 52) solid 0.5px;
+  background-color: rgb(31, 32, 35);
+  height: 100vh;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#RowMenu{
+  /* box-sizing: content-box; */
+  height: 100%;
+  /* background-color: #222; */
+}
+
+
+#RowMenu ul {
+  
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#RowMenu ul li{
+  float: left;
+  width: 20%;
+  height: 100%;
+  line-height: 50px;
+  text-align: center;
+}
+
+#RowMenu ul li a {
+  color: white;
+  display: block;
+  
+}
+
+#RowMenu a {
+  text-decoration: none;
+}
+
+#RowMenu ul li a:hover {
+  background: rgb(51, 54, 59);
+  color: #fff
+}
