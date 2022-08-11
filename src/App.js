@@ -106,10 +106,23 @@ function Menu() {
     <InsidePage selectedMenu={clickIndex}></InsidePage>
   </div>
 }
+
+function RowMenu(props) {
+  const lis = []
+  return <div>
+    <ul>
+      {lis}
+    </ul>
+  </div>
+}
 function HomePage() {
   return <div id="page">
     {/* Page Top Header */}
-    <div id='PageHeader'></div>
+    <div id='PageHeader'>
+      <div>
+        <a href='/'>나무위키</a>
+      </div>
+    </div>
     {/* Page Body */}
     <div id="PageBody">
       <div id='BodyContent'> </div>
