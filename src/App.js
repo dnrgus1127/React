@@ -1,6 +1,8 @@
 import './App.css';
+
 import React, { useState, useEffect } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import Whiskey from './IntroAcol';
 
 
 
@@ -46,25 +48,28 @@ function Page() {
 
 function PageAlcol() {
   return <div className='Center'>
-     <img src="/images/wine.png" alt='wine' width="96px" height="192px" className='Center'></img>
-     <p>파논 토카이 아토푸슈 6</p>
+    <img src="/images/wine.png" alt='wine' width="96px" height="192px" className='Center'></img>
+    <p>파논 토카이 아토푸슈 6</p>
+    <p>레드 와인</p>
   </div>
 }
 
-function InsidePage(props){ // Menu 컴포넌트 
+function InsidePage(props) { // Menu 컴포넌트 
   let menuId = props.selectedMenu // Menu 컴포넌트 선택된 값
   let content = null;
 
-  if(menuId === '칵테일 추천'){
+  if (menuId === '칵테일 추천') {
     content = <TitleImg></TitleImg>
   }
-  else if(menuId === '칵테일'){
+  else if (menuId === '칵테일') {
     content = <h1>식</h1>
+  }
+  else if (menuId === '위스키') {
+    content = <Whiskey></Whiskey>
   }
   else {
     content = <h2>{props.selectedMenu}</h2>
   }
-  console.log(props.selectedMenu)
 
   // setMenuId(props.menuId);
 
@@ -75,23 +80,22 @@ function InsidePage(props){ // Menu 컴포넌트
 
 function Menu() {
   const menus = [
-    {id :1, title: '칵테일 추천'},
-    {id :2, title: '칵테일'},
-    {id :3, title: '위스키'},
-    {id :4, title: '보드카'},
-    {id :5, title: '데킬라'},
-    {id :6, title: '리큐르'},
-    {id :7, title: '럼'},
-    {id :8, title: '와인'}
+    { id: 1, title: '칵테일 추천' },
+    { id: 2, title: '칵테일' },
+    { id: 3, title: '위스키' },
+    { id: 4, title: '보드카' },
+    { id: 5, title: '데킬라' },
+    { id: 6, title: '리큐르' },
+    { id: 7, title: '럼' },
+    { id: 8, title: '와인' }
   ]
-  let [clickIndex,setClickIndex] = useState("칵테일 추천");
+  let [clickIndex, setClickIndex] = useState("칵테일 추천");
   const lis = []
-  for(let i = 0; i< menus.length; i++){
+  for (let i = 0; i < menus.length; i++) {
     lis.push(<li key={menus[i].id}><a href='/' onClick={(event) => {
       event.preventDefault();
       // clickIndex = menus[i].title;
       setClickIndex(menus[i].title)
-      console.log(clickIndex)
     }
     }>{menus[i].title}</a></li>)
   }
@@ -99,9 +103,23 @@ function Menu() {
     <ul>
       {lis}
     </ul>
-    <InsidePage selectedMenu = {clickIndex}></InsidePage>
+    <InsidePage selectedMenu={clickIndex}></InsidePage>
   </div>
 }
+function HomePage() {
+  return <div id="page">
+    {/* Page Top Header */}
+    <div id='PageHeader'></div>
+    {/* Page Body */}
+    <div id="PageBody">
+      <div id='BodyContent'> </div>
+    </div>
+    {/* Page Footer*/}
+    <div id='PageFooter'></div>
+
+  </div>
+}
+
 
 function App() {
   return (
@@ -111,11 +129,13 @@ function App() {
         <Switch>
           <Route exact path="/" component={Page} />
           <Route path="/api/time" component={Page} />
+          <Route path="/homepage" component={HomePage} />
           <Route path="*" component={PageAlcol} />
         </Switch>
       </header>
     </Router>
   );
 }
+
 
 export default App;
