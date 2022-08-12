@@ -8,6 +8,7 @@ import Dashboard from './containers/Dashboard'
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles/global'
 import {lightTheme, darkTheme} from './styles/theme'
+import { useThemeContext } from './context/themeContext';
 
 function Header(props) { //Component
   console.log('props', props, props.title)
@@ -150,7 +151,8 @@ function HomePage() {
 
 
 function SpeedCode() {
-  return <ThemeProvider theme={lightTheme}>
+  const { theme } = useThemeContext();
+  return <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
     <GlobalStyle />
     <Dashboard />
   </ThemeProvider>
