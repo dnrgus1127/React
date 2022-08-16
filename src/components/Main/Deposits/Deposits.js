@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Information from './Information'
 import SortingBar from './SortingBar'
 
 
@@ -28,9 +29,8 @@ const Deposits = ({title, count, data}) => {
   return (
     <div>
         <Title>{title}<DepositsCount>{count}</DepositsCount></Title>
-        <SortingBar>
-           
-        </SortingBar>
+        <SortingBar />  
+        <Information/>
     </div>
   )
 }

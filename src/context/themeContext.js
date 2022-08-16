@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext } from 'react'
 
-export const ThemeContext = React.createContext({theme : "light"})
+export const ThemeContext = createContext({theme : "light"})
 
 export const ThemeContextProvider = ({ children }) => {
     const [theme, setTheme] = useState('light');

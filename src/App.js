@@ -3,12 +3,12 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Whiskey from './IntroAcol';
-import styled from "style-components"
 import Dashboard from './containers/Dashboard'
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles/global'
 import {lightTheme, darkTheme} from './styles/theme'
 import { useThemeContext } from './context/themeContext';
+import DashboardUpSidebar from './containers/DashboardUpSidebar';
 
 function Header(props) { //Component
   console.log('props', props, props.title)
@@ -149,6 +149,15 @@ function HomePage() {
   </div>
 }
 
+function SpeedCode2() {
+  const { theme } = useThemeContext();
+  return <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+    <GlobalStyle />
+    <DashboardUpSidebar/>
+  </ThemeProvider>
+}
+
+
 
 function SpeedCode() {
   const { theme } = useThemeContext();
@@ -168,6 +177,7 @@ function App() {
           <Route path="/api/time" component={Page} />
           <Route path="/homepage" component={HomePage} />
           <Route path="/speedCode" component={SpeedCode} />
+          <Route path="/speedCode2" component={SpeedCode2} />
           <Route path="*" component={PageAlcol} />
 
         </Switch>

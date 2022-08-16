@@ -18,6 +18,7 @@ export const lightTheme = {
     header: '#585280',
     headerNumber: '#fff',
     activeMenu: '#582880',
+    shadowColor: 'rgba(0,0,0,0.3);',
     ...globalTheme
 }
 
@@ -27,6 +28,8 @@ export const darkTheme = {
     textColor: '#fff',
     header: '#fff',
     headerNumber: '#582880',
-    activeMenu: '#FFF',
+    activeMenu: '#fff',
+    shadowColor: 'rgba(255,255,255,0.1);',
+
     ...globalTheme
 }

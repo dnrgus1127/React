@@ -8,6 +8,8 @@ const Container = styled.div`
     background-color: ${({ theme }) => theme.secondary};
     margin: 2rem 0;
     border-radius: 5px;
+    box-shadow: 0px 0px 15px ${({theme})=> theme.shadowColor};
+
 `
 
 const Text = styled.h1`
